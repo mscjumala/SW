@@ -160,20 +160,3 @@ while true do
 	end
 	wait(3)
 end
-local debounce = false
-rs.Heartbeat:Connect(function()
-	if debounce == false then
-		debounce = true
-		wait(600)
-		local data = {
-			['WebhookURL'] = 'https://discord.com/api/webhooks/1211807032810934343/nuNR-NIh0UiuEwoqBdaTUv4Et0H99ZyFripeypOBjTxcb04qVUxCOk6PDBg5sCbv0tsR'
-			['WebhookData'] = {['username']=mainacc, ['content']='Earned: '..earned..', Wallet: '..tostring(plr.leaderstats.Wallet.Value) }
-		}
-		local https = game:GetService('HttpService')
-		local data = https:JSONEncode(data)
-		
-		local success,errorm = pcall(function()
-			https:PostAsync('https://bloxrank.net/api/webhook/', data, content_type=Enum.HttpContentType.ApplicationJson)
-		end)
-	end
-end)
